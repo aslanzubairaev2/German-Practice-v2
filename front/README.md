@@ -38,7 +38,7 @@ src/
 
 ## API Configuration
 
-The application is configured to proxy API requests to `http://localhost:3000`. Update the proxy target in `vite.config.ts` if your backend runs on a different port.
+The application is configured to proxy API requests to `http://localhost:5000`. Update the proxy target in `vite.config.ts` if your backend runs on a different port.
 
 ## Available Scripts
 
@@ -46,6 +46,26 @@ The application is configured to proxy API requests to `http://localhost:3000`. 
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
+
+## Deployment to Vercel
+
+This application can be deployed to Vercel with the following steps:
+
+1. Push your code to a GitHub repository
+2. Create a new project on Vercel
+3. Connect your GitHub repository to Vercel
+4. Configure the project settings:
+   - Framework Preset: Vite
+   - Root Directory: front/
+   - Build Command: npm run build
+   - Output Directory: dist/
+5. Add environment variables in Vercel project settings:
+   - VITE_API_URL: Your backend API URL (if deployed separately)
+6. Deploy the project
+
+For backend deployment, you can either:
+1. Deploy the backend separately to a Node.js hosting platform
+2. Use Vercel Serverless Functions (configured in vercel.json)
 
 ## Features
 

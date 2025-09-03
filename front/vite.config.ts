@@ -12,5 +12,17 @@ export default defineConfig({
         secure: false,
       }
     }
+  },
+  // Add base path for Vercel deployment
+  base: '/',
+  // Configure build output directory
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   }
 })

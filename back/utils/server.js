@@ -36,8 +36,10 @@ export const startServer = async (app) => {
   // Store supabase client in app locals for use in routes
   app.locals.supabase = supabase;
   
-  // Smart import of initial phrases
-  await smartImportPhrases();
+  // Smart import of initial phrases only in development
+  if (process.env.NODE_ENV !== 'production') {
+    await smartImportPhrases();
+  }
   
   // Define port
   const PORT = process.env.PORT || 5000;

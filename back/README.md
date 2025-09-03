@@ -15,6 +15,7 @@ This is the backend server for the German Practice application, built with Expre
 
 ```
 back/
+├── api/            # Vercel Serverless Functions
 ├── controllers/     # Request handlers
 ├── generators/      # AI phrase generation functionality
 ├── middlewares/     # Custom middleware functions
@@ -40,7 +41,7 @@ back/
    SUPABASE_API_KEY=your_supabase_api_key
    GEMINI_API_KEY=your_gemini_api_key
    DEEPSEEK_API_KEY=your_deepseek_api_key
-   PORT=3001
+   PORT=5000
    ```
 
 3. Start the development server:
@@ -89,6 +90,19 @@ npm run check-generated-phrases
 - `POST /api/phrases` - Create a new phrase
 - `PUT /api/phrases/:id` - Update a phrase
 - `DELETE /api/phrases/:id` - Delete a phrase
+
+## Deployment to Vercel
+
+This backend can be deployed to Vercel as Serverless Functions:
+
+1. The application is configured to work with Vercel Serverless Functions
+2. The main API entry point is at `back/api/vercel.js`
+3. Routes are automatically handled by the Express application
+4. Environment variables need to be configured in Vercel project settings:
+   - SUPABASE_PROJECT_API
+   - SUPABASE_API_KEY
+   - GEMINI_API_KEY
+   - DEEPSEEK_API_KEY
 
 ## Phrase Model
 

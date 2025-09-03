@@ -1,0 +1,25 @@
+# Environment variables
+.env
+.env.production
+.env.local
+
+# Dependency directories
+node_modules/
+
+# Distribution files
+dist/
+dist-ssr/
+
+# Logs
+logs
+*.log
+
+# IDE and editor files
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

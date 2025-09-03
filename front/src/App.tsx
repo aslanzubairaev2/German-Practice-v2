@@ -3,7 +3,6 @@ import { usePhraseStore } from './store';
 import CardStack from './CardStack';
 import './App.css'
 import { useState, useEffect } from 'react';
-import type { Phrase } from './types';
 import { mockPhrases } from './mockData';
 
 function App() {

@@ -12,6 +12,8 @@ node_modules/
 
 # Environment variables
 .env
+.env.production
+.env.local
 
 # Distribution files
 dist/
