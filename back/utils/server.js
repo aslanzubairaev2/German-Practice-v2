@@ -6,8 +6,9 @@ import { smartImportPhrases } from './smartImport.js';
  * @returns {import('@supabase/supabase-js').SupabaseClient}
  */
 export const initSupabase = () => {
-  const supabaseUrl = process.env.SUPABASE_PROJECT_API;
-  const supabaseKey = process.env.SUPABASE_API_KEY;
+  // Use the custom environment variable name to avoid conflicts
+  const supabaseUrl = process.env.MY_SUPABASE_PROJECT_API || process.env.SUPABASE_PROJECT_API;
+  const supabaseKey = process.env.MY_SUPABASE_API_KEY || process.env.SUPABASE_API_KEY;
   
   if (!supabaseUrl || !supabaseKey) {
     throw new Error('Missing Supabase environment variables');
