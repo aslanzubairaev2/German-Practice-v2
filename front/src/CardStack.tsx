@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Card from './Card';
 import './CardStack.css';
 import type { Phrase } from './types';
@@ -12,6 +12,7 @@ interface CardStackProps {
 const CardStack: React.FC<CardStackProps> = ({ phrases, currentIndex, onIndexChange }) => {
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0); // Key to force re-render
   const currentCardRef = useRef<{ flipAndSpeak: () => void } | null>(null);
   
   // Text-to-speech function for German phrase
@@ -63,6 +64,7 @@ const CardStack: React.FC<CardStackProps> = ({ phrases, currentIndex, onIndexCha
       onIndexChange(newIndex);
       setSwipeDirection(null);
       setIsAnimating(false);
+      setAnimationKey(prev => prev + 1); // Force re-render to prevent flickering
     }, 300);
   };
 
@@ -75,20 +77,20 @@ const CardStack: React.FC<CardStackProps> = ({ phrases, currentIndex, onIndexCha
     <div className="card-stack">
       {/* Previous card (for right swipe) */}
       {swipeDirection === 'right' && (
-        <div className="card-coming-from-left">
+        <div className="card-coming-from-left" key={`prev-${animationKey}`}>
           <Card phrase={prevPhrase} />
         </div>
       )}
       
       {/* Next card (for left swipe) */}
       {swipeDirection === 'left' && (
-        <div className="card-coming-from-right">
+        <div className="card-coming-from-right" key={`next-${animationKey}`}>
           <Card phrase={nextPhrase} />
         </div>
       )}
       
       {/* Current card */}
-      <div className={`card-current ${swipeDirection ? `swipe-${swipeDirection}` : ''}`}>
+      <div className={`card-current ${swipeDirection ? `swipe-${swipeDirection}` : ''}`} key={`current-${animationKey}`}>
         <Card 
           ref={currentCardRef}
           phrase={currentPhrase} 

@@ -19,14 +19,14 @@
   position: absolute;
   z-index: 5;
   transform: translateX(-200vw);
-  animation: slideInFromLeft 0.3s forwards;
+  animation: slideInFromLeft 0.3s forwards ease-out;
 }
 
 .card-coming-from-right {
   position: absolute;
   z-index: 5;
   transform: translateX(200vw);
-  animation: slideInFromRight 0.3s forwards;
+  animation: slideInFromRight 0.3s forwards ease-out;
 }
 
 @keyframes slideInFromLeft {
@@ -48,11 +48,11 @@
 }
 
 .card-current.swipe-left {
-  animation: swipeLeft 0.3s forwards;
+  animation: swipeLeft 0.3s forwards ease-in;
 }
 
 .card-current.swipe-right {
-  animation: swipeRight 0.3s forwards;
+  animation: swipeRight 0.3s forwards ease-in;
 }
 
 @keyframes swipeLeft {
@@ -81,6 +81,7 @@
   width: 100%;
   position: absolute;
   bottom: -50px;
+  z-index: 20;
 }
 
 .dont-know-text {
@@ -92,6 +93,7 @@
   border-radius: 4px;
   transition: background-color 0.2s ease;
   white-space: nowrap;
+  user-select: none;
 }
 
 .dont-know-text:hover {
