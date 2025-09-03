@@ -23,15 +23,31 @@ async function checkImportedPhrases() {
     const { data: testData, error: testError } = await supabase
       .from('phrases')
       .select('*')
-      .ilike('german', '%neue Phrase%');
+      .ilike('german', '%Testphrase%');
     
     if (testError) {
       console.error('❌ Error fetching test phrases:', testError);
       process.exit(1);
     }
     
-    console.log(`✅ Found ${testData.length} 'neue Phrase' phrases in the database`);
+    console.log(`✅ Found ${testData.length} 'Testphrase' phrases in the database`);
     testData.forEach(phrase => {
+      console.log(`  - ${phrase.german} (${phrase.russian})`);
+    });
+    
+    // Check for 'neue Phrase' phrases
+    const { data: neueData, error: neueError } = await supabase
+      .from('phrases')
+      .select('*')
+      .ilike('german', '%neue Phrase%');
+    
+    if (neueError) {
+      console.error('❌ Error fetching neue phrases:', neueError);
+      process.exit(1);
+    }
+    
+    console.log(`\n✅ Found ${neueData.length} 'neue Phrase' phrases in the database`);
+    neueData.forEach(phrase => {
       console.log(`  - ${phrase.german} (${phrase.russian})`);
     });
     

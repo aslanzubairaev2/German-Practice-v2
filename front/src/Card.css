@@ -68,11 +68,12 @@
   word-wrap: break-word;
 }
 
-.card-transcription, .card-context {
+.card-transcription, .card-context, small {
   margin-top: 15px;
-  font-size: 0.9rem;
-  opacity: 0.8;
+  font-size: 0.8rem;
+  opacity: 0.6;
   font-style: italic;
+  font-weight: 300;
 }
 
 .card-context {
